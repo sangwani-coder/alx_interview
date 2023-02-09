@@ -2,31 +2,37 @@
 
 """
     Problem #1
+    find out the maximun numbers of 'A' you
+    can print on screen.
 """
+# Input N = 2
+    # output = 2 -> for: A, A
+
+# Input: N = 12
+# Output: 30 -> for the sequence
+    # A, A, A, A, A Ctrl-A, Ctrl-C, Ctrl-V, Ctrl-V, Ctrl-V, Ctrl-V, Ctrl-V
 
 N = int(input())
-non_print_presses = 2
+
+# number of keys not printing
+key2_key3_presses = 2
 
 
 def check_max():
     """
         finds the maximum number of 'A' you can print on screen.
     """
-    output1 = check_key_combination(3)
-    output2 = check_key_combination(4)
-    output3 = check_key_combination(5)
+    largest = check_key_combination(3)
 
-    if output1 >= output2 and output1 >= output3:
-        largest = output1
-    elif output2 >= output1 and output2 >= output3:
-        largest = output2
-    else:
-        largest = output3
+    for i in range(4, N + 1):
+        temp = check_key_combination(i)
 
+        if largest < temp:
+            largest = temp
     return largest
 
 
-def check_key_combination(single_key_press):
+def check_key_combination(key1_A):
     """
         function to calculate key combinations to
         print max number of A's on screen.
@@ -34,14 +40,14 @@ def check_key_combination(single_key_press):
 
     if N < 7:
         return N
-    printing_presses = N - non_print_presses
+    printing_presses = N - key2_key3_presses
 
-    c_v_combin = printing_presses - single_key_press
+    key4_c_v = printing_presses - key1_A
 
-    total_c_v_output = c_v_combin * single_key_press
+    total_c_v_output = key4_c_v * key1_A
 
-    output = total_c_v_output + single_key_press
+    output = total_c_v_output + key1_A
 
     return output
  
-print(check_max())
+#print(check_max())
