@@ -14,24 +14,23 @@
 
 def isTooSweet(i):
     """
-        finds the first number of teaspoons that make
+        finds x, the first number of teaspoons that make
         the cake too sweet.
     """
     # After x the cake is too swweet
     # n is superior or equal to 1
     # for any value of n, your cake will always be 
     # too sweet( x always exists)
-    # recipe says n = 4
-    # i = 3
+
     n = int(input())
-    x = 0
     if n >= 1:
         if i == n:
             x = i
             return True
         if i > n:
             for j in range(i):
-                if x == n:
+                if j == n:
                     x = j
-                x += 1
             return True
+        if i < n:
+            x = n
